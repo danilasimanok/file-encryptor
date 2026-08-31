@@ -2,8 +2,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:FileTransformer.ViewModels"
         mc:Ignorable="d" Width="500" Height="250"
         x:Class="FileTransformer.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
         Title="File Transformer">
     <Window.Styles>
         <Style Selector="Button">
@@ -26,7 +28,8 @@
                             Grid.Column="2"
                             Minimum="0"
                             Maximum="255"
-                            Increment="1" />
+                            Increment="1"
+                            Value="{Binding ShortKey}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Caesar" FontSize="18">
@@ -37,26 +40,40 @@
                             Grid.Column="2"
                             Minimum="-255"
                             Maximum="255"
-                            Increment="1" />
+                            Increment="1"
+                            Value="{Binding ShortKey}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Vigenère encrypt" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
                     <TextBlock Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
-                    <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Input your key</TextBox>
+                    <TextBox VerticalAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Text="{Binding LongKey}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Vigenère decrypt" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
                     <TextBlock Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
-                    <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Input your key</TextBox>
+                    <TextBox VerticalAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Text="{Binding LongKey}"/>
                 </Grid>
             </TabItem>
         </TabControl>
         <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
             <TextBlock Grid.Row="0" Grid.Column="0">Choose a file</TextBlock>
-            <TextBlock FontWeight="Normal" Grid.Row="0" Grid.Column="1">No file chosen</TextBlock>
-            <Button VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Choose</Button>
+            <TextBlock FontWeight="Normal"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding ChosenFile}"/>
+            <Button VerticalAlignment="Center"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Content="Select a file"
+                    Command="{Binding SelectFileAsync}"/>
         </Grid>
         <Button>Precess file</Button>
     </StackPanel>

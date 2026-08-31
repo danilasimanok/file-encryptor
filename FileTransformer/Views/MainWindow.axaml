@@ -5,12 +5,22 @@
         mc:Ignorable="d" Width="500" Height="250"
         x:Class="FileTransformer.Views.MainWindow"
         Title="File Transformer">
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Window.Styles>
     <StackPanel>
-        <TextBlock VerticalAlignment="Center">Select transformation procedure and a file</TextBlock>
+        <TextBlock>Select transformation procedure and a file</TextBlock>
         <TabControl>
             <TabItem Header="XOR" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
-                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
                     <NumericUpDown VerticalAlignment="Center"
                             Grid.Row="0"
                             Grid.Column="2"
@@ -21,7 +31,7 @@
             </TabItem>
             <TabItem Header="Caesar" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
-                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Shift</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="0">Shift</TextBlock>
                     <NumericUpDown VerticalAlignment="Center"
                             Grid.Row="0"
                             Grid.Column="2"
@@ -32,22 +42,22 @@
             </TabItem>
             <TabItem Header="Vigenère encrypt" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
-                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
                     <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Input your key</TextBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Vigenère decrypt" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
-                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
                     <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Input your key</TextBox>
                 </Grid>
             </TabItem>
         </TabControl>
         <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
-            <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Choose a file</TextBlock>
-            <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="1">No file chosen</TextBlock>
-            <Button VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">Choose</Button>
+            <TextBlock Grid.Row="0" Grid.Column="0">Choose a file</TextBlock>
+            <TextBlock FontWeight="Normal" Grid.Row="0" Grid.Column="1">No file chosen</TextBlock>
+            <Button VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Choose</Button>
         </Grid>
-        <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">Precess file</Button>
+        <Button>Precess file</Button>
     </StackPanel>
 </Window>

@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" Width="500" Height="250"
-        x:Class="FileTransformer.MainWindow"
+        x:Class="FileTransformer.Views.MainWindow"
         Title="File Transformer">
     <StackPanel>
         <TextBlock>Select transformation procedure and a file</TextBlock>
@@ -11,7 +11,12 @@
             <TabItem Header="XOR" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
                     <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
-                    <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Input your key</TextBox>
+                    <NumericUpDown VerticalAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Minimum="0"
+                            Maximum="255"
+                            Increment="1" />
                     <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0">Choose a file</TextBlock>
                     <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">No file chosen</TextBlock>
                     <Button VerticalAlignment="Center" Grid.Row="1" Grid.Column="2">Choose</Button>
@@ -20,7 +25,12 @@
             <TabItem Header="Caesar" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
                     <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Shift</TextBlock>
-                    <TextBox VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">Input your shift</TextBox>
+                    <NumericUpDown VerticalAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Minimum="-255"
+                            Maximum="255"
+                            Increment="1" />
                     <TextBlock FontWeight="Bold" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0">Choose a file</TextBlock>
                     <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">No file chosen</TextBlock>
                     <Button VerticalAlignment="Center" Grid.Row="1" Grid.Column="2">Choose</Button>

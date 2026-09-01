@@ -8,6 +8,9 @@ namespace FileTransformer.ViewModels;
 public partial class MainViewModel(FilePickerService filePickerService) : ObservableObject
 {
     [ObservableProperty]
+    public partial int TransformationIndex { get; set; } = 0;
+
+    [ObservableProperty]
     public partial int ShortKey { get; set; } = 0;
 
     [ObservableProperty]
@@ -15,10 +18,20 @@ public partial class MainViewModel(FilePickerService filePickerService) : Observ
 
     [ObservableProperty]
     public partial string ChosenFile { get; set; } = String.Empty;
+    private Uri? _inputFile;
+    private Uri? _outputFile;
 
     [RelayCommand]
     public async Task SelectFileAsync()
     {
-        ChosenFile = await filePickerService.PickFileAsync();
+        _inputFile = await filePickerService.PickFileToOpenAsync();
+        ChosenFile = _inputFile is null ? String.Empty : _inputFile.LocalPath;
+    }
+
+    [RelayCommand]
+    public async Task ProcessFile()
+    {
+        _outputFile = await filePickerService.PickFileToSaveAsync();
+        Console.WriteLine($"Transform: {TransformationIndex}, File name: {_outputFile?.LocalPath}");
     }
 }

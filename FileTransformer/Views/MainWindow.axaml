@@ -19,7 +19,7 @@
     </Window.Styles>
     <StackPanel>
         <TextBlock>Select transformation procedure and a file</TextBlock>
-        <TabControl>
+        <TabControl SelectedIndex="{Binding TransformationIndex}">
             <TabItem Header="XOR" FontSize="18">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
                     <TextBlock Grid.Row="0" Grid.Column="0">Encryption Key</TextBlock>
@@ -75,6 +75,6 @@
                     Content="Select a file"
                     Command="{Binding SelectFileAsync}"/>
         </Grid>
-        <Button>Precess file</Button>
+        <Button Command="{Binding ProcessFile}">Precess file</Button>
     </StackPanel>
 </Window>

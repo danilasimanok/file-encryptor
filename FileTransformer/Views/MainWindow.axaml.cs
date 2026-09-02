@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace FileTransformer;
+namespace FileTransformer.Views;
 
 public partial class MainWindow : Window
 {

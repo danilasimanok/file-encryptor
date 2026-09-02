@@ -1,6 +1,4 @@
-using System.Collections;
-
-namespace SimpleEncryption;
+namespace SimpleEncryption.Encoders;
 
 public class VigenereEncoder(Byte[] key) : IEncoderStrategy
 {

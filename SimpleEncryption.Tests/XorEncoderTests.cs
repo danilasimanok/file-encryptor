@@ -1,4 +1,6 @@
-﻿namespace SimpleEncryption.Tests;
+﻿using SimpleEncryption.Encoders;
+
+namespace SimpleEncryption.Tests;
 
 public class XorEncoderTests
 {

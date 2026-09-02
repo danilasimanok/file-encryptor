@@ -1,3 +1,5 @@
+using SimpleEncryption.Encoders;
+
 namespace SimpleEncryption.Tests;
 
 public class CaesarEncoderTests

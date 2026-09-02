@@ -1,4 +1,4 @@
-namespace SimpleEncryption;
+namespace SimpleEncryption.Encoders;
 
 public class CaesarEncoder(Byte shift) : IEncoderStrategy
 {

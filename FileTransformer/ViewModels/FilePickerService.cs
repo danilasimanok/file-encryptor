@@ -26,7 +26,7 @@ public class FilePickerService(TopLevel topLevel)
             new FilePickerSaveOptions
             {
                 Title = "Select a file",
-                SuggestedFileName = "coverted"
+                SuggestedFileName = "converted"
             });
         return file?.Path;
     }

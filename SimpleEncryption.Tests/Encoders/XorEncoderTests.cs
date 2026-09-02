@@ -1,6 +1,6 @@
 ﻿using SimpleEncryption.Encoders;
 
-namespace SimpleEncryption.Tests;
+namespace SimpleEncryption.Tests.Encoders;
 
 public class XorEncoderTests
 {

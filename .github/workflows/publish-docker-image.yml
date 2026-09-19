@@ -1,0 +1,21 @@
+name: Publish Docker image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  publish_images:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag danilasimanok/file-encryptor:latest
+    - name: Push the image
+      run: |
+        docker login -u danilasimanok -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push danilasimanok/file-encryptor:latest

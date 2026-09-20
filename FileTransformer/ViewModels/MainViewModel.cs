@@ -74,6 +74,14 @@ public partial class MainViewModel(FilePickerService filePickerService) : Observ
 
             Result = "Ok";
         }
+        catch (NullReferenceException _)
+        {
+            Result = "Input or output file not chosen";
+        }
+        catch (UnauthorizedAccessException _)
+        {
+            Result = "Files cannot be processed: unauthorized access";
+        }
         catch (Exception e)
         {
             Result = e.ToString();

@@ -25,6 +25,9 @@ public partial class MainViewModel(FilePickerService filePickerService) : Observ
     private Uri? _inputFile;
     private Uri? _outputFile;
 
+    [ObservableProperty]
+    public partial string Result { get; set; } = String.Empty;
+
     [RelayCommand]
     public async Task SelectFileAsync()
     {
@@ -49,22 +52,39 @@ public partial class MainViewModel(FilePickerService filePickerService) : Observ
     [RelayCommand]
     public async Task ProcessFile()
     {
-        _outputFile = await filePickerService.PickFileToSaveAsync();
-
-        var inputStream = File.OpenRead(_inputFile.LocalPath);
-        var outputStream = File.Create(_outputFile.LocalPath);
-        var encoder = GetFactory().CreateEncoder();
-
-        byte[] buffer = new byte[1024];
-        int readLength;
-        while ((readLength = inputStream.Read(buffer, 0, buffer.Length)) > 0)
+        try 
         {
-            for (int i = 0; i < readLength; ++i)
-                buffer[i] = encoder.Transform(buffer[i]);
-            outputStream.Write(buffer, 0, readLength);
-        }
+            _outputFile = await filePickerService.PickFileToSaveAsync();
 
-        inputStream.Close();
-        outputStream.Close();
+            var inputStream = File.OpenRead(_inputFile.LocalPath);
+            var outputStream = File.Create(_outputFile.LocalPath);
+            var encoder = GetFactory().CreateEncoder();
+
+            byte[] buffer = new byte[1024];
+            int readLength;
+            while ((readLength = inputStream.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                for (int i = 0; i < readLength; ++i)
+                    buffer[i] = encoder.Transform(buffer[i]);
+                outputStream.Write(buffer, 0, readLength);
+            }
+
+            inputStream.Close();
+            outputStream.Close();
+
+            Result = "Ok";
+        }
+        catch (NullReferenceException _)
+        {
+            Result = "Input or output file not chosen";
+        }
+        catch (UnauthorizedAccessException _)
+        {
+            Result = "Files cannot be processed: unauthorized access";
+        }
+        catch (Exception e)
+        {
+            Result = e.ToString();
+        }
     }
 }

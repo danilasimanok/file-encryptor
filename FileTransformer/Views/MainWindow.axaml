@@ -76,5 +76,8 @@
                     Command="{Binding SelectFileAsync}"/>
         </Grid>
         <Button Command="{Binding ProcessFile}">Precess file</Button>
+        <TextBlock FontWeight="Normal"
+            HorizontalAlignment="Center"
+            Text="{Binding Result}"/>
     </StackPanel>
 </Window>
